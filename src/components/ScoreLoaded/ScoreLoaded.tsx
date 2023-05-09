@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
-import logo from '../../assets/LogoWidget';
-import line from '../../assets/Line';
-import maximize from '../../assets/Maximize';
+import React from 'react'
+import Logo from '../../assets/LogoWidget';
+import Line from '../../assets/Line';
+import Maximize from '../../assets/Maximize';
 const ScoreLoaded = ({ reputeXScore, userAddress, lastUpdated, mode }: { reputeXScore: number, userAddress: string, lastUpdated: string, mode: boolean }) => {
 
   const styles = {
@@ -17,7 +17,7 @@ const ScoreLoaded = ({ reputeXScore, userAddress, lastUpdated, mode }: { reputeX
 
   const modeColor = mode ? "bg-[#1C1E29]" : "bg-white";
   const textColor = mode ? "text-white" : "text-black" ;
-  const borderColor = mode ? "border-black" : "border-[#C5C5C5]";
+  // const borderColor = mode ? "border-black" : "border-[#C5C5C5]";
   return (
 
     <div className="flex justify-center items-center h-screen">
@@ -28,16 +28,15 @@ const ScoreLoaded = ({ reputeXScore, userAddress, lastUpdated, mode }: { reputeX
                             
             {/* score display */}
             <div className="flex w-[180px] h-[55px]  m-5 rounded-[106px] bg-gradient-to-r from-[#00FFFF] via-[#8A76FF] to-[#FF00FF] text-white">
-              <img src={logo} alt='' className='m-1' width={40} height={40} />
+              <Logo className='m-1' width={40} height={40} />
               <p className='text-[28px] py-1 ml-2 font-grotesk' >{reputeXScore}</p>
               <a href="https://reputex.io/" target="_blank" rel="noreferrer">
-                <img src={maximize} alt='' className='p-2 ml-1 mt-2' />
+                <Maximize className='p-2 ml-1 mt-2' />
               </a>
 
             </div>
 
-            <img src={line} alt='' className='w-[170px] ml-4' />
-
+            <Line className='w-[170px] ml-4'  />
             {/* address display */}
             <div className='p-4'>
               <p>{`${userAddress.slice(0, 10)}...${userAddress.slice(-4)}`}</p>
@@ -47,6 +46,7 @@ const ScoreLoaded = ({ reputeXScore, userAddress, lastUpdated, mode }: { reputeX
             {/* explore button */}
             <div className='mt-3 ml-3'>
 
+            {/* TODO: Update the url */}
               <a href={`http://localhost:3000/explorer?address=${userAddress}`}>
                 <button
                   type="button"

@@ -11,11 +11,11 @@ const ReputexWidget = ({ userAddress,visibility, mode }: { userAddress: string ,
   
 
   const [showSecondComponent, setShowSecondComponent] = useState(false);
-//   const [enableQuery, setEnableQuery] = useState<boolean>(false);
+  const [enableQuery, setEnableQuery] = useState<boolean>(false);
   const { dataScoreBreakDown, statusScoreBreakDown } = useScoreBreakdown( userAddress, enableQuery);
   const [message, setMessage] = useState<string>("")
 
-//   const formattedDate = moment(dataScoreBreakDown?.data?.lastUpdated ?? "").fromNow();
+  const formattedDate = moment(dataScoreBreakDown?.data?.lastUpdated ?? "").fromNow();
  
   const validateDomain = (value: string) => {
     if (/[a-z0-9-]+\.(?:eth)(?:\.[a-z]{2,3})?/.test(value) === true) {
@@ -93,7 +93,7 @@ const ReputexWidget = ({ userAddress,visibility, mode }: { userAddress: string ,
       userAddress={userAddress} 
       lastUpdated={`Last updated ${formattedDate}`}  mode={mode} /> 
       : 
-      <PendingState bodyMessage={message} mode={mode} />
+      <PendingState bodyMessage={message} />
 )}
 
 {/* <PendingState bodyMessage={message} mode={mode}/> */}
