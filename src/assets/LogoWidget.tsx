@@ -4,8 +4,8 @@ const SvgLogoWidget = (props: SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     xmlnsXlink="http://www.w3.org/1999/xlink"
-    width={53}
-    height={53}
+    width={props.width}
+    height={props.height}
     fill="none"
     {...props}
   >

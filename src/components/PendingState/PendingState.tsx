@@ -10,18 +10,23 @@ import '../../tailwind.css'
 import { motion, AnimatePresence } from "framer-motion";
 
 
-const PendingState = ({ bodyMessage }: { bodyMessage: string }) => {
+const PendingState = ({ bodyMessage, mode }: { bodyMessage: string, mode: boolean}) => {
+
+  const modeColor = mode ? "bg-[#1C1E29]" : "bg-white";
+  const textColor = mode ? "text-white" : "text-black" ;
+  const lineColor = mode ? "#fff": "black" ;
+
   return (
     <AnimatePresence>
       <motion.div className="flex justify-center items-center h-screen">
       <motion.div className="rounded-lg bg-gradient-to-r from-[#00FFFF] via-[#8A76FF] to-[#FF00FF] w-[354px] h-[284px]">
       <motion.div
-        className="flex flex-col relative rounded-md w-[350px] h-[280px] px-4 py-3 mx-auto my-0.5 bg-[#1C1E29] text-white"
+        className={`flex flex-col relative rounded-md w-[350px] h-[280px] px-4 py-3 mx-auto my-0.5 ${modeColor} ${textColor} `}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
       >
-        <div className="flex w-[180px] h-[55px]  m-5 rounded-[106px] bg-[#FFFFFF] bg-opacity-[17%] text-white">
+        <div className="flex w-[180px] h-[55px] m-5 ml-2 rounded-[106px] bg-[#C5C5C5] text-white">
         
         <motion.div
             className="p-2"
@@ -35,8 +40,8 @@ const PendingState = ({ bodyMessage }: { bodyMessage: string }) => {
               delay: 0.2,
             }}
           >
-          {/* <img src={circleRight} alt="" className=" mt-0.5" /> */}
-          <CircleRight className=" mt-0.5" />
+         
+          <CircleRight className="" />
           </motion.div>
 
           <motion.div
@@ -56,19 +61,19 @@ const PendingState = ({ bodyMessage }: { bodyMessage: string }) => {
           </motion.div>
         </div>
 
-        {/* <img src={line} alt="" className="w-[170px] ml-4" /> */}
-        <Line className="w-[170px] ml-4"/>
+        
+        <Line className="w-[170px] ml-4" stroke={lineColor}/>
 
 
         {/* address display */}
         <div>
-          <p className="whitespace-normal truncate p-4 ">{bodyMessage}</p>
+          <p className="whitespace-normal truncate p-5 ">{bodyMessage}</p>
         </div>
 
         {/* Loading animation */}
-        <div className="flex mt-3 mx-auto">
+        <div className="flex ml-4">
           <motion.div
-            className="p-2 ml-2"
+            className="p-2"
             animate={{ scale: [1, 1.2, 1]}}
             transition={{
               duration: 1,

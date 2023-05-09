@@ -4,20 +4,12 @@ import Line from '../../assets/Line';
 import Maximize from '../../assets/Maximize';
 const ScoreLoaded = ({ reputeXScore, userAddress, lastUpdated, mode }: { reputeXScore: number, userAddress: string, lastUpdated: string, mode: boolean }) => {
 
-  const styles = {
-    grotesk: {
-      fontFamily: "Space Grotesk",
-      fontStyle: "normal",
-    },
-    DM: {
-      fontFamily: "DM Sans",
-      fontStyle: "normal",
-    },
-  };
+
 
   const modeColor = mode ? "bg-[#1C1E29]" : "bg-white";
   const textColor = mode ? "text-white" : "text-black" ;
-  // const borderColor = mode ? "border-black" : "border-[#C5C5C5]";
+  const lineColor = mode ? "#fff": "black" ;
+  
   return (
 
     <div className="flex justify-center items-center h-screen">
@@ -27,16 +19,17 @@ const ScoreLoaded = ({ reputeXScore, userAddress, lastUpdated, mode }: { reputeX
         
                             
             {/* score display */}
-            <div className="flex w-[180px] h-[55px]  m-5 rounded-[106px] bg-gradient-to-r from-[#00FFFF] via-[#8A76FF] to-[#FF00FF] text-white">
-              <Logo className='m-1' width={40} height={40} />
-              <p className='text-[28px] py-1 ml-2 font-grotesk' >{reputeXScore}</p>
+            <div className="flex w-[180px] h-[62px]  m-4 rounded-[106px] bg-gradient-to-r from-[#00FFFF] via-[#8A76FF] to-[#FF00FF] text-white">
+              <Logo width={53} height={53} className=' ml-1 my-1 p-' />
+              <p className='text-[28px] mt-2 ml-2 font-grotesk ' >{reputeXScore}</p>
               <a href="https://reputex.io/" target="_blank" rel="noreferrer">
-                <Maximize className='p-2 ml-1 mt-2' />
+                <Maximize className=' m-5' />
               </a>
 
             </div>
 
-            <Line className='w-[170px] ml-4'  />
+            <Line className="w-[170px] ml-4" stroke={lineColor}/>
+
             {/* address display */}
             <div className='p-4'>
               <p>{`${userAddress.slice(0, 10)}...${userAddress.slice(-4)}`}</p>
@@ -50,9 +43,9 @@ const ScoreLoaded = ({ reputeXScore, userAddress, lastUpdated, mode }: { reputeX
               <a href={`http://localhost:3000/explorer?address=${userAddress}`}>
                 <button
                   type="button"
-                  className={`rounded-3xl relative inline-flex items-center justify-center p-0.5 cursor-pointer w-64 h-12 mt-1 ${modeColor} ${textColor} border-2 border-[#9B9797]`} style={styles.grotesk}>
+                  className={`rounded-3xl relative inline-flex items-center font-grotesk justify-center p-0.5 cursor-pointer w-60 h-12 mt-1 ml-1 ${modeColor} ${textColor} border-2 border-[#9B9797]`} >
                  
-                   Try the explorer
+                   Try the Explorer
                 </button>
               </a>
 

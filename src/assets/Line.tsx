@@ -9,7 +9,7 @@ const SvgLine = (props: SVGProps<SVGSVGElement>) => (
     {...props}
   >
     <path
-      stroke="#fff"
+      stroke={props.color}
       strokeWidth={1.057}
       d="M0 1.472h247.306"
       opacity={0.2}
