@@ -1,1 +1,1 @@
-export {default as PendingState} from './PendingState/PendingState' 
+export {default as ReputeXWidget} from './ReputeXWidget/ReputeXWidget' 
