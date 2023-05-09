@@ -33,5 +33,6 @@
     "noEmit": true,
     "declarationDir": "types",
     "outDir": "dist",
+    "types": ["node"]
   }
 }

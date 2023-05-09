@@ -13,8 +13,10 @@ import { motion, AnimatePresence } from "framer-motion";
 const PendingState = ({ bodyMessage }: { bodyMessage: string }) => {
   return (
     <AnimatePresence>
+      <motion.div className="flex justify-center items-center h-screen">
+      <motion.div className="rounded-lg bg-gradient-to-r from-[#00FFFF] via-[#8A76FF] to-[#FF00FF] w-[354px] h-[284px]">
       <motion.div
-        className="absolute w-[310px] h-[250px] right-[2px] mx-4 my-6 rounded-md bg-[#1C1E29] text-white"
+        className="flex flex-col relative rounded-md w-[350px] h-[280px] px-4 py-3 mx-auto my-0.5 bg-[#1C1E29] text-white"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
@@ -112,6 +114,8 @@ const PendingState = ({ bodyMessage }: { bodyMessage: string }) => {
             <RectangleRight/>
           </motion.div>
         </div>
+      </motion.div>
+      </motion.div>
       </motion.div>
     </AnimatePresence>
   );
