@@ -6,6 +6,8 @@ import postcss from "rollup-plugin-postcss";
 
 import peerDepsExternal from "rollup-plugin-peer-deps-external";
 import sourcemaps from "rollup-plugin-sourcemaps";
+import json from "@rollup/plugin-json";
+
 
 export default [
 	{
@@ -26,6 +28,7 @@ export default [
 			peerDepsExternal(),
 			resolve(),
 			typescript({ tsconfig: "./tsconfig.json" }),
+			json(),
 			sourcemaps(),
 			commonjs({
 				extensions: [".js", ".jsx", ".ts", ".tsx"],

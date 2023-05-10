@@ -2,9 +2,31 @@ import React from "react";
 import ScoreLoaded from "../ScoreLoaded/ScoreLoaded";
 import PendingState from "../PendingState/PendingState";
 import { useEffect, useState } from "react";
-import { ethers } from "ethers";
 import useScoreBreakdown from "../../hooks/useScoreBreakdown";
 import moment from "moment";
+
+/**
+ * Checks if the given string is an address
+ *
+ * @method isAddress
+ * @param {String} address the given HEX adress
+ * @return {Boolean}
+ */
+const isAddress = (address: string): boolean => {
+	if (address.length != 42) {
+		// The address has to be a length of 42 characters
+		return false;
+	} else if (!/^(0x)?[0-9a-f]{40}$/i.test(address)) {
+		// check if it has the basic requirements of an address
+		return false;
+	} else if (/^(0x)?[0-9a-f]{40}$/.test(address) || /^(0x)?[0-9A-F]{40}$/.test(address)) {
+		// If it's all small caps or all all caps, return true
+		return true;
+	} else {
+		// Fallback to true instead of checksum since API will take care of an issue.
+		return true;
+	}
+};
 
 const ParentWidget = ({
 	userAddress,
@@ -57,24 +79,21 @@ const ParentWidget = ({
 
 	useEffect(() => {
 		const addressOrDomain = userAddress.trim();
-		if (validateDomain(addressOrDomain) || ethers.isAddress(addressOrDomain)) {
+		if (validateDomain(addressOrDomain) || isAddress(addressOrDomain)) {
 			setEnableQuery(true);
 		} else {
 			setEnableQuery(false);
 		}
 	}, [userAddress]);
 
-	useEffect(
-		() => handleCheckScoreHookUpdates(),
-		[statusScoreBreakDown]
-	);
+	useEffect(() => handleCheckScoreHookUpdates(), [statusScoreBreakDown]);
 
 	const handleCheckScoreHookUpdates = () => {
-		if (!validateDomain(userAddress.trim()) && !ethers.isAddress(userAddress.trim())) {
+		if (!validateDomain(userAddress.trim()) && !isAddress(userAddress.trim())) {
 			setShowSecondComponent(false);
 			setMessage("invalid input");
 		}
-		if (validateDomain(userAddress.trim()) || ethers.isAddress(userAddress.trim())) {
+		if (validateDomain(userAddress.trim()) || isAddress(userAddress.trim())) {
 			if (statusScoreBreakDown === "loading") {
 				setShowSecondComponent(false);
 				setMessage("The Score is being fetched for this wallet..");
@@ -83,8 +102,8 @@ const ParentWidget = ({
 
 			if (statusScoreBreakDown === "success" && dataScoreBreakDown?.success) {
 				setShowSecondComponent(true);
+				return; 
 			}
-			return;
 		} else if (
 			(statusScoreBreakDown === "success" || statusScoreBreakDown === "error") &&
 			!dataScoreBreakDown?.success
