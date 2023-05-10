@@ -1,1 +1,1 @@
-export {default as ReputeXWidget} from './ReputeXWidget/ReputeXWidget' 
+export { default as ReputeXWidget } from "./ReputeXWidget/ReputeXWidget";
