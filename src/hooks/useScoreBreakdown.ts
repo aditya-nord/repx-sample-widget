@@ -1,5 +1,5 @@
-import { useQuery } from "@tanstack/react-query";
 import scoreBreakdown, { ScoreBreakdown } from "../api/scoreBreakdown";
+import { useEffect, useState } from "react";
 
 const useScoreBreakdown = (
 	address: string,
@@ -7,18 +7,25 @@ const useScoreBreakdown = (
 	accessKey: string,
 	apiSecret: string
 ): {
-	dataScoreBreakDown: ScoreBreakdown | undefined;
+	dataScoreBreakDown?: ScoreBreakdown;
 	statusScoreBreakDown: "error" | "success" | "loading";
 } => {
-	const { data, status } = useQuery({
-		queryKey: ["scoreBreakdown", address],
-		queryFn: () => scoreBreakdown(address, accessKey, apiSecret),
-		retry: false,
-		enabled: enableFlag,
-		staleTime: Infinity,
-	});
+	const [dataScoreBreakDown, setDataScoreBreakDown] = useState<ScoreBreakdown>();
+	const [statusScoreBreakDown, setStatusScoreBreakDown] = useState<
+		"error" | "success" | "loading"
+	>("loading");
+	useEffect(() => {
+		scoreBreakdown(address, accessKey, apiSecret)
+			.then((resp) => {
+				setDataScoreBreakDown(resp);
+				setStatusScoreBreakDown("success");
+			})
+			.catch((_) => {
+				setStatusScoreBreakDown("error");
+			});
+	}, [address, enableFlag]);
 
-	return { dataScoreBreakDown: data, statusScoreBreakDown: status };
+	return { dataScoreBreakDown, statusScoreBreakDown };
 };
 
 export default useScoreBreakdown;

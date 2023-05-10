@@ -26,7 +26,7 @@ export default [
 		],
 		plugins: [
 			peerDepsExternal(),
-			resolve(),
+			resolve({ browser: true }),
 			typescript({ tsconfig: "./tsconfig.json" }),
 			json(),
 			sourcemaps(),

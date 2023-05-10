@@ -1,6 +1,6 @@
 {
 	"name": "repxwidget",
-	"version": "0.0.8",
+	"version": "0.0.9",
 	"description": "A test package",
 	"type": "module",
 	"scripts": {
@@ -56,7 +56,6 @@
 	],
 	"types": "dist/index.d.ts",
 	"dependencies": {
-		"@tanstack/react-query": "^4.29.5",
 		"axios": "^1.4.0",
 		"framer-motion": "^10.12.8",
 		"moment": "^2.29.4"
