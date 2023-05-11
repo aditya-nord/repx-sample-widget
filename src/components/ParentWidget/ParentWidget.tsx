@@ -30,13 +30,13 @@ const isAddress = (address: string): boolean => {
 
 const ParentWidget = ({
 	userAddress,
-	accessKey,
+	apiAccessKey,
 	apiSecret,
 	visibility,
 	mode,
 }: {
 	userAddress: string;
-	accessKey: string;
+	apiAccessKey: string;
 	apiSecret: string;
 	visibility: boolean;
 	mode: boolean;
@@ -46,7 +46,7 @@ const ParentWidget = ({
 	const { dataScoreBreakDown, statusScoreBreakDown } = useScoreBreakdown(
 		userAddress,
 		enableQuery,
-		accessKey,
+		apiAccessKey,
 		apiSecret
 	);
 	const [message, setMessage] = useState<string>("");
@@ -102,7 +102,7 @@ const ParentWidget = ({
 
 			if (statusScoreBreakDown === "success" && dataScoreBreakDown?.success) {
 				setShowSecondComponent(true);
-				return; 
+				return;
 			}
 		} else if (
 			(statusScoreBreakDown === "success" || statusScoreBreakDown === "error") &&

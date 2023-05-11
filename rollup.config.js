@@ -8,16 +8,15 @@ import peerDepsExternal from "rollup-plugin-peer-deps-external";
 import sourcemaps from "rollup-plugin-sourcemaps";
 import json from "@rollup/plugin-json";
 
-
 export default [
 	{
 		input: "src/index.ts",
 		output: [
-			{
-				file: "dist/cjs/index.js",
-				format: "cjs",
-				sourcemap: true,
-			},
+			// {
+			// 	file: "dist/cjs/index.js",
+			// 	format: "cjs",
+			// 	sourcemap: true,
+			// },
 			{
 				file: "dist/esm/index.js",
 				format: "esm",
@@ -36,8 +35,9 @@ export default [
 			}),
 			postcss({
 				config: {
-					path: "./postcss.config.js",
+					path: "./postcss.config.cjs",
 				},
+				modules: false,
 				extensions: [".css"],
 				minimize: true,
 				inject: {

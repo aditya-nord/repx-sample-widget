@@ -1,10 +1,13 @@
 {
 	"name": "repxwidget",
-	"version": "0.0.9",
+	"version": "0.0.21",
 	"description": "A test package",
 	"type": "module",
 	"scripts": {
+		"purge": "rm -r dist",
+		"format": "npx prettier -w .",
 		"rollup": "rollup -c",
+		"build": "npm run purge && npm run format && npm run rollup",
 		"storybook": "storybook dev -p 3000",
 		"build-storybook": "storybook build"
 	},
@@ -33,7 +36,6 @@
 		"@types/node": "^20.1.1",
 		"@types/react": "^18.2.6",
 		"autoprefixer": "^10.4.14",
-		"postcss": "^8.4.23",
 		"prettier": "2.8.8",
 		"prop-types": "^15.8.1",
 		"react": "^18.2.0",
@@ -45,10 +47,11 @@
 		"rollup-plugin-sourcemaps": "^0.6.3",
 		"storybook": "^7.0.9",
 		"tailwindcss": "^3.3.2",
+		"ts-node": "^10.9.1",
 		"typescript": "^5.0.4",
 		"util": "^0.12.5"
 	},
-	"main": "dist/cjs/index.js",
+	"main": "dist/esm/index.js",
 	"module": "dist/esm/index.js",
 	"files": [
 		"dist",

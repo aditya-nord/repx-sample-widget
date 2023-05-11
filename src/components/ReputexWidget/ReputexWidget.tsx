@@ -3,19 +3,27 @@ import ParentWidget from "../ParentWidget/ParentWidget";
 
 const ReputeXWidget = ({
 	userAddress,
-	accessKey,
+	apiAccessKey,
 	apiSecret,
 	visibility,
 	mode,
 }: {
 	userAddress: string;
-	accessKey: string;
+	apiAccessKey: string;
 	apiSecret: string;
 	visibility: boolean;
 	mode: boolean;
 }) => {
 	return (
-		<ParentWidget userAddress={userAddress} accessKey={accessKey} apiSecret={apiSecret} visibility={visibility} mode={mode}  />
+		<div className="text-left">
+			<ParentWidget
+				userAddress={userAddress}
+				apiAccessKey={apiAccessKey}
+				apiSecret={apiSecret}
+				visibility={visibility}
+				mode={mode}
+			/>
+		</div>
 	);
 };
 

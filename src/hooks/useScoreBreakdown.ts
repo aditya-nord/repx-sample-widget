@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 const useScoreBreakdown = (
 	address: string,
 	enableFlag: boolean,
-	accessKey: string,
+	apiAccessKey: string,
 	apiSecret: string
 ): {
 	dataScoreBreakDown?: ScoreBreakdown;
@@ -15,7 +15,7 @@ const useScoreBreakdown = (
 		"error" | "success" | "loading"
 	>("loading");
 	useEffect(() => {
-		scoreBreakdown(address, accessKey, apiSecret)
+		scoreBreakdown(address, apiAccessKey, apiSecret)
 			.then((resp) => {
 				setDataScoreBreakDown(resp);
 				setStatusScoreBreakDown("success");

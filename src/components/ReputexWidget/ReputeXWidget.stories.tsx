@@ -12,7 +12,7 @@ const Template: StoryFn<typeof ReputeXWidget> = (args) => <ReputeXWidget {...arg
 export const Primary = Template.bind({});
 Primary.args = {
 	userAddress: "",
-	accessKey: "",
+	apiAccessKey: "",
 	apiSecret: "",
 	visibility: true,
 	mode: true,
