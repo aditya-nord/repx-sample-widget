@@ -42,8 +42,7 @@ const ScoreLoaded = ({
 
 					{/* explore button */}
 					<div className="mt-3 ml-3">
-						{/* TODO: Update the url */}
-						<a href={`http://localhost:3000/explorer?address=${userAddress}`}>
+						<a href={`https://reputex.io/explorer?address=${userAddress}`}>
 							<button
 								type="button"
 								className={`rounded-3xl relative inline-flex items-center font-grotesk justify-center p-0.5 cursor-pointer w-60 h-12 mt-1 ml-1 ${modeColor} ${textColor} border-2 border-[#9B9797]`}
